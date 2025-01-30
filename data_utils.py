@@ -40,3 +40,8 @@ def split_to_tensor(X, y, test_size=0.2, random_state=None):
         torch.FloatTensor(y_train),
         torch.FloatTensor(y_test)
     )
+
+def accuracy_fn(y_true, y_pred):
+    correct = torch.eq(y_true, y_pred).sum().item() # torch.eq() calculates where two tensors are equal
+    acc = (correct / len(y_pred)) * 100
+    return acc
